@@ -74,10 +74,12 @@ img {
 }
 
 .nav-row {
+    position: relative;
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
 }
 
 .brand {
@@ -87,12 +89,21 @@ img {
     font-size: 22px;
     font-weight: 900;
     letter-spacing: -0.03em;
+    min-width: 0;
+    flex-shrink: 1;
+}
+
+.brand span {
+    min-width: 0;
+    overflow-wrap: break-word;
+    line-height: 1.15;
 }
 
 .brand img {
     height: 48px;
     width: auto;
     object-fit: contain;
+    flex-shrink: 0;
 }
 
 .brand b {
@@ -482,8 +493,10 @@ blockquote {
 }
 
 .search {
-    flex: 1;
-    min-width: 300px;
+    flex: 1 1 220px;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
     padding: 18px 24px;
     border: 1px solid var(--border-light);
     border-radius: 18px;
@@ -616,6 +629,15 @@ footer {
     margin-bottom: 80px;
 }
 
+.product-info {
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+.product-info .lead {
+    max-width: none;
+}
+
 .zoom-card {
     background: #fff;
     border: 1px solid var(--border-light);
@@ -688,8 +710,30 @@ footer {
 
 .detail-actions {
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
     margin-top: 40px;
+}
+
+.detail-actions .btn,
+.detail-actions button.btn {
+    flex: 1 1 min(100%, 220px);
+    justify-content: center;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--primary);
+    background: rgba(244, 118, 33, 0.1);
+    padding: 8px 14px;
+    border-radius: 999px;
+    margin-bottom: 16px;
 }
 
 /* Page Hero */
@@ -697,6 +741,17 @@ footer {
     padding: 80px 0;
     background: var(--bg-soft);
     text-align: center;
+}
+
+.page-hero h1 {
+    font-size: clamp(30px, 6vw, 56px);
+    line-height: 1.08;
+    overflow-wrap: break-word;
+}
+
+.page-hero .lead {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .split {
@@ -741,17 +796,74 @@ footer {
 /* Responsive */
 @media (max-width: 960px) {
     .desktop-nav, .nav-cta { display: none; }
-    .hamb { display: flex; }
+    .hamb { display: flex; flex-shrink: 0; }
     .hero-grid, .product-grid, .review-wrap, .split, .contact-grid, .foot-grid, .product-detail {
         grid-template-columns: 1fr;
     }
+    .catalog-tools {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filters {
+        justify-content: flex-start;
+    }
+    .zoom-box { height: min(320px, 52vw); }
+    .zoom-card {
+        padding: 28px 20px;
+        border-radius: 28px;
+    }
+    .product-info h2 { font-size: clamp(26px, 6vw, 34px); }
+    .specs { grid-template-columns: 1fr; }
+    .product-detail { gap: 30px; margin-bottom: 48px; }
     .hero { padding: 60px 0; }
     .product-grid { grid-template-columns: repeat(2, 1fr); }
     .section-head { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .section { padding: 64px 0; }
+    .top-inner {
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        justify-content: center;
+        text-align: center;
+    }
 }
 
 @media (max-width: 600px) {
     .product-grid { grid-template-columns: 1fr; }
     h1 { font-size: 44px; }
+    .page-hero { padding: 48px 0 40px; }
+    .page-hero h1 { font-size: clamp(26px, 8vw, 40px); }
+    .page-hero .lead { font-size: 17px; }
     .two { grid-template-columns: 1fr; }
+    .brand { font-size: clamp(16px, 4.2vw, 20px); gap: 8px; }
+    .brand img { height: 40px; }
+    .nav-row { height: 72px; }
+    .mobile-panel { top: 72px; }
+    .zoom-box { height: min(260px, 58vw); }
+    .zoom-card {
+        padding: 18px 14px;
+        border-radius: 22px;
+    }
+    .zoom-card .sku {
+        font-size: 12px;
+        line-height: 1.45;
+    }
+    .spec { padding: 16px; }
+    .detail-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .detail-actions .btn,
+    .detail-actions button.btn {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: none;
+    }
+    .section { padding: 44px 0; }
+    .chip { padding: 10px 16px; font-size: 13px; }
+}
+
+@media (max-width: 380px) {
+    .container {
+        width: min(1200px, 94%);
+    }
 }
