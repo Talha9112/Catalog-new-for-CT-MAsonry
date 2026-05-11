@@ -304,8 +304,8 @@ h1 {
 /* Product Cards */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
 .product-card {
@@ -742,7 +742,7 @@ footer {
 @media (max-width: 960px) {
     .desktop-nav, .nav-cta { display: none; }
     .hamb { display: flex; }
-    .hero-grid, .product-grid, .review-wrap, .split, .contact-grid, .foot-grid {
+    .hero-grid, .product-grid, .review-wrap, .split, .contact-grid, .foot-grid, .product-detail {
         grid-template-columns: 1fr;
     }
     .hero { padding: 60px 0; }
