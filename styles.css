@@ -865,6 +865,28 @@ footer {
     border-radius: 40px;
 }
 
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.mission-visual {
+    margin-top: 32px;
+    overflow: hidden;
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 24px 60px rgba(0, 0, 0, 0.16);
+}
+
+.mission-visual img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
 .check-list {
     display: grid;
     gap: 20px;
@@ -894,7 +916,7 @@ footer {
 @media (max-width: 960px) {
     .desktop-nav, .nav-cta { display: none; }
     .hamb { display: flex; flex-shrink: 0; }
-    .hero-grid, .product-grid, .review-wrap, .split, .contact-grid, .foot-grid, .product-detail {
+    .hero-grid, .product-grid, .review-wrap, .split, .mission-grid, .contact-grid, .foot-grid, .product-detail {
         grid-template-columns: 1fr;
     }
     .catalog-tools {
